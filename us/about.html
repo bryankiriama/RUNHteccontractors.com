@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="about-body">
+    <iframe src="../header.html" style="width: 100%; height: 500px; border: none;"></iframe>
+    <div class="coming-soon">
+        <div class="animation>">
+    <h1>Under Construction</h1>
+    <p>Our new site is being built. Stay tuned for something solid!</p>
+    </div>
+   </div>
+
+  <div class="particles"></div>
+  <script>
+    const text = document.querySelector('.coming-soon h1');
+    const particlesContainer = document.querySelector('.particles');
+    let hue = 0;
+
+    // Text color and scale animation
+    function animateText() {
+      hue = (hue + 1) % 360;
+      text.style.background = `linear-gradient(45deg, hsl(${hue}, 80%, 50%), hsl(${(hue + 60) % 360}, 80%, 50%), hsl(${(hue + 120) % 360}, 80%, 50%))`;
+      text.style.backgroundClip = 'text';
+      text.style.webkitBackgroundClip = 'text';
+      text.style.transform = `scale(${1 + Math.sin(Date.now() / 1200) * 0.12}) rotate(${Math.sin(Date.now() / 2400) * 6}deg)`;
+      requestAnimationFrame(animateText);
+    }
+
+    // Particle animation with construction-themed SVG
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = `${Math.random() * 100}vw`;
+      particle.style.top = `${Math.random() * 100}vh`;
+      particle.style.animationDelay = `${Math.random() * 4}s`;
+      particle.style.animationDuration = `${3 + Math.random() * 2}s`;
+      particlesContainer.appendChild(particle);
+      setTimeout(() => particle.remove(), 4000);
+    }
+
+    // Generate particles periodically
+    setInterval(createParticle, 100);
+    animateText();
+  </script>
+    </div>
+<div class="footer1">
+<iframe src="../footer.html" style = "width:100%; height:450px;"></iframe>
+</div>
+</body>
+</html>
